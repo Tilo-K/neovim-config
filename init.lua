@@ -495,3 +495,9 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+-- Own Stuff
+vim.api.nvim_set_keymap('n', '<C-k>', ':wincmd k<CR>', {silent = true})
+vim.api.nvim_set_keymap('n', '<C-j>', ':wincmd j<CR>', {silent = true})
+vim.api.nvim_set_keymap('n', '<C-h>', ':wincmd h<CR>', {silent = true})
+vim.api.nvim_set_keymap('n', '<C-l>', ':wincmd l<CR>', {silent = true})
+
