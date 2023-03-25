@@ -78,7 +78,7 @@ require('lazy').setup({
     'catppuccin/nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'catppuccin-macchiato'
+      vim.cmd.colorscheme 'catppuccin'
     end,
   },
 
@@ -88,7 +88,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'catppuccin-macchiato',
+        theme = 'catppuccin',
         component_separators = '|',
         section_separators = '',
       },
