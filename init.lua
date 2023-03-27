@@ -37,7 +37,8 @@ require('lazy').setup({
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
-  { -- LSP Configuration & Plugins
+  {
+    -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
@@ -53,14 +54,16 @@ require('lazy').setup({
     },
   },
 
-  { -- Autocompletion
+  {
+    -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
-  { -- Adds git releated signs to the gutter, as well as utilities for managing changes
+  { 'folke/which-key.nvim',          opts = {} },
+  {
+    -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
       -- See `:help gitsigns.txt`
@@ -82,7 +85,8 @@ require('lazy').setup({
     end,
   },
 
-  { -- Set lualine as statusline
+  {
+    -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
@@ -95,7 +99,8 @@ require('lazy').setup({
     },
   },
 
-  { -- Add indentation guides even on blank lines
+  {
+    -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
@@ -106,7 +111,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',         opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
@@ -124,7 +129,8 @@ require('lazy').setup({
     end,
   },
 
-  { -- Highlight, edit, and navigate code
+  {
+    -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
@@ -458,13 +464,13 @@ cmp.setup {
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 -- Own Stuff
-vim.api.nvim_set_keymap('n', '<C-k>', ':wincmd k<CR>', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-j>', ':wincmd j<CR>', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-h>', ':wincmd h<CR>', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-l>', ':wincmd l<CR>', {silent = true})
+vim.api.nvim_set_keymap('n', '<C-k>', ':wincmd k<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<C-j>', ':wincmd j<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<C-h>', ':wincmd h<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<C-l>', ':wincmd l<CR>', { silent = true })
 
 
-vim.api.nvim_set_keymap('n', '<leader>sn', '<cmd>lua require("impulse").menu_search()<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>sn', '<cmd>lua require("impulse").menu_search()<cr>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<Leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 
@@ -476,4 +482,9 @@ vim.cmd([[
   augroup END
 ]])
 
-vim.api.nvim_buf_set_keymap(vim.fn.bufnr(), 'n', '<Leader>rs', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
+vim.api.nvim_buf_set_keymap(vim.fn.bufnr(), 'n', '<Leader>rs', '<cmd>lua vim.lsp.buf.rename()<CR>',
+  { noremap = true, silent = true })
+
+
+vim.g.rustfmt_autosave = 1
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
