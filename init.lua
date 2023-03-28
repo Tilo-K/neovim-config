@@ -482,9 +482,10 @@ vim.cmd([[
   augroup END
 ]])
 
-vim.api.nvim_buf_set_keymap(vim.fn.bufnr(), 'n', '<Leader>rs', '<cmd>lua vim.lsp.buf.rename()<CR>',
-  { noremap = true, silent = true })
-
 
 vim.g.rustfmt_autosave = 1
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+
+vim.api.nvim_set_keymap('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
