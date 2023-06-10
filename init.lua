@@ -502,3 +502,8 @@ vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
 vim.api.nvim_set_keymap('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<Leader>s', '<Plug>YSurround', {})
+
+
+vim.api.nvim_set_keymap('n', '<Leader>ss', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
