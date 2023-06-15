@@ -571,3 +571,11 @@ vim.api.nvim_set_keymap(
   "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
   { noremap = true }
 )
+
+local cfg = {
+  bind = true,   -- This is mandatory, otherwise border config won't get registered.
+  handler_opts = {
+    border = "rounded"
+  }
+} -- add your config here
+require "lsp_signature".setup(cfg)
