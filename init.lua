@@ -580,3 +580,14 @@ local cfg = {
   }
 } -- add your config here
 require "lsp_signature".setup(cfg)
+
+
+require("harpoon").setup({
+  tabline = true,
+
+})
+
+vim.api.nvim_set_keymap('n', '<Leader>m', '<cmd>lua require("harpoon.mark").add_file()<CR>',
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader><Tab>', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>',
+  { noremap = true, silent = true })
