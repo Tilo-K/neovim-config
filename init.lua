@@ -267,7 +267,7 @@ vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { des
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+-- vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -363,7 +363,7 @@ local on_attach = function(_, bufnr)
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+  nmap('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
   nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
@@ -510,6 +510,7 @@ vim.api.nvim_set_keymap('n', '<Leader>s', '<Plug>YSurround', {})
 
 
 vim.api.nvim_set_keymap('n', '<Leader>ss', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>sd', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('v', '<C-r>', [["hy:%s/<C-r>h//gc<left><left><left>]], { noremap = true })
 
@@ -573,7 +574,7 @@ vim.api.nvim_set_keymap(
 )
 
 local cfg = {
-  bind = true,   -- This is mandatory, otherwise border config won't get registered.
+  bind = true, -- This is mandatory, otherwise border config won't get registered.
   handler_opts = {
     border = "rounded"
   }
