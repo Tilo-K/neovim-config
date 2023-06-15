@@ -243,6 +243,9 @@ require('telescope').setup {
       },
     },
   },
+  file_ignore_patterns = {
+
+  }
 }
 
 -- Enable telescope fzf native, if installed
