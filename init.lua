@@ -93,10 +93,10 @@ require('lazy').setup({
   },
 
   {
-    'catppuccin/nvim',
+    'EdenEast/nightfox.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'catppuccin'
+      vim.cmd.colorscheme 'carbonfox'
     end,
   },
 
