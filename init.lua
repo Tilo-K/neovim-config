@@ -109,7 +109,7 @@ require('lazy').setup({
       opts = {
         options = {
           icons_enabled = false,
-          theme = 'catppuccin',
+          theme = 'carbonfox',
           component_separators = '|',
           section_separators = '',
         },
@@ -601,3 +601,13 @@ vim.opt.shiftwidth = 4   -- Indents will have a width of 4
 vim.opt.softtabstop = 4  -- Sets the number of columns for a TAB
 
 vim.opt.expandtab = true -- Expand TABs to spaces
+
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
+
+-- empty setup using defaults
+require("nvim-tree").setup()

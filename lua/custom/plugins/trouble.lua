@@ -1,6 +1,6 @@
 return {
   "folke/trouble.nvim",
-  requires = "kyazdani42/nvim-web-devicons",
+  requires = "nvim-tree/nvim-web-devicons",
   config = function()
     require("trouble").setup {
       -- your configuration comes here
