@@ -606,6 +606,8 @@ vim.opt.expandtab = true -- Expand TABs to spaces
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.wo.relativenumber = true
+
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
