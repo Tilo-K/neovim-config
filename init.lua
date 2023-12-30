@@ -580,7 +580,7 @@ local cfg = {
 } -- add your config here
 require "lsp_signature".setup(cfg)
 
-
+--[[
 require("harpoon").setup({
   tabline = true,
 
@@ -590,6 +590,24 @@ vim.api.nvim_set_keymap('n', '<Leader>m', '<cmd>lua require("harpoon.mark").add_
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader><Tab>', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>',
   { noremap = true, silent = true })
+]]--
+
+local harpoon = require('harpoon')
+harpoon:setup({})
+
+vim.keymap.set("n", "<Leader><Tab>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+    { desc = "Open harpoon window" })
+vim.keymap.set("n", "<Leader>m", function() harpoon:list():append() end,
+    { desc = "Append file to harpoon list" })
+
+vim.keymap.set("n", "<Leader>1", function() harpoon:list():select(1)end,
+    { desc = "Open File No 1" })
+vim.keymap.set("n", "<Leader>2", function() harpoon:list():select(2) end,
+    { desc = "Open File No 2" })
+vim.keymap.set("n", "<Leader>3", function() harpoon:list():select(3) end,
+    { desc = "Open file No 3" })
+vim.keymap.set("n", "<Leader>4", function() harpoon:list():select(4) end,
+    { desc = "Open File No 4" })
 
 vim.opt.tabstop = 4 -- The width of a TAB is set to 4.
 -- Still it is a \t. It is just that
