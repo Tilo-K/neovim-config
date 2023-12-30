@@ -593,7 +593,12 @@ vim.api.nvim_set_keymap('n', '<Leader><Tab>', '<cmd>lua require("harpoon.ui").to
 ]]--
 
 local harpoon = require('harpoon')
-harpoon:setup({})
+harpoon:setup({
+   settings = {
+    save_on_toggle = true,
+    sync_on_ui_close = true,
+  }
+})
 
 vim.keymap.set("n", "<Leader><Tab>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
     { desc = "Open harpoon window" })
