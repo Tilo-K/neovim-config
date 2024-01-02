@@ -639,3 +639,9 @@ vim.api.nvim_set_keymap("i", "<C-Enter", 'copilot#Accept("<CR>")', { silent = tr
 
 -- empty setup using defaults
 require("nvim-tree").setup()
+
+
+-- Move lines up / down
+vim.api.nvim_set_keymap('n', '<S-Up>', ':m-2<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-Down>', ':m+<CR>', { noremap = true, silent = true })
+
