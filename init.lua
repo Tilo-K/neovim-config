@@ -276,7 +276,7 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-  auto_install = false,
+  auto_install = true,
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -541,14 +541,14 @@ require('refactoring').setup({
 
 -- Remaps for the refactoring operations currently offered by the plugin
 vim.api.nvim_set_keymap("v", "<leader>re", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]],
-  { noremap = true, silent = true, expr = false })
+  { noremap = true, silent = true, expr = false, desc = "Extract Function" })
 vim.api.nvim_set_keymap("v", "<leader>rf",
   [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]],
-  { noremap = true, silent = true, expr = false })
+  { noremap = true, silent = true, expr = false, desc = "Extract Function To File" })
 vim.api.nvim_set_keymap("v", "<leader>rv", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]],
-  { noremap = true, silent = true, expr = false })
+  { noremap = true, silent = true, expr = false, desc = "Extract Variable" })
 vim.api.nvim_set_keymap("v", "<leader>ri", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
-  { noremap = true, silent = true, expr = false })
+  { noremap = true, silent = true, expr = false, desc = "Inline Variable" })
 
 -- Extract block doesn't need visual mode
 vim.api.nvim_set_keymap("n", "<leader>rb", [[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]],
