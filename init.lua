@@ -645,3 +645,5 @@ require("nvim-tree").setup()
 vim.api.nvim_set_keymap('n', '<S-Up>', ':m-2<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<S-Down>', ':m+<CR>', { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', '<Leader>td', ':TodoTelescope<CR>', { noremap = true, silent = true })
+
