@@ -647,3 +647,21 @@ vim.api.nvim_set_keymap('n', '<S-Down>', ':m+<CR>', { noremap = true, silent = t
 
 vim.api.nvim_set_keymap('n', '<Leader>td', ':TodoTelescope<CR>', { noremap = true, silent = true })
 
+
+require('lspconfig').rust_analyzer.setup {
+  -- Other Configs ...
+  settings = {
+    ["rust-analyzer"] = {
+      -- Other Settings ...
+      procMacro = {
+        ignored = {
+            leptos_macro = {
+                "component",
+                "server",
+            },
+        },
+      },
+    },
+  }
+}
+
