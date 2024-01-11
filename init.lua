@@ -625,10 +625,6 @@ vim.opt.softtabstop = 4  -- Sets the number of columns for a TAB
 
 vim.opt.expandtab = true -- Expand TABs to spaces
 
--- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 vim.wo.relativenumber = true
 
 -- set termguicolors to enable highlight groups
