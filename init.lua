@@ -630,9 +630,6 @@ vim.wo.relativenumber = true
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
-vim.g.copilot_no_tab_map = true
-vim.api.nvim_set_keymap("i", "<C-Enter", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-
 
 -- Move lines up / down
 vim.api.nvim_set_keymap('n', '<S-Up>', ':m-2<CR>', { noremap = true, silent = true })
