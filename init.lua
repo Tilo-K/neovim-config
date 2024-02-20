@@ -96,7 +96,7 @@ require('lazy').setup({
     'EdenEast/nightfox.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'carbonfox'
+      -- vim.cmd.colorscheme 'carbonfox'
     end,
   },
 
@@ -655,3 +655,6 @@ require('lspconfig').rust_analyzer.setup {
   }
 }
 
+
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
