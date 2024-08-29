@@ -47,7 +47,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -590,29 +590,29 @@ vim.api.nvim_set_keymap('n', '<Leader>m', '<cmd>lua require("harpoon.mark").add_
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader><Tab>', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>',
   { noremap = true, silent = true })
-]]--
+]] --
 
 local harpoon = require('harpoon')
 harpoon:setup({
-   settings = {
+  settings = {
     save_on_toggle = true,
     sync_on_ui_close = true,
   }
 })
 
 vim.keymap.set("n", "<Leader><Tab>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
-    { desc = "Open harpoon window" })
+  { desc = "Open harpoon window" })
 vim.keymap.set("n", "<Leader>m", function() harpoon:list():append() end,
-    { desc = "Append file to harpoon list" })
+  { desc = "Append file to harpoon list" })
 
-vim.keymap.set("n", "<Leader>1", function() harpoon:list():select(1)end,
-    { desc = "Open File No 1" })
+vim.keymap.set("n", "<Leader>1", function() harpoon:list():select(1) end,
+  { desc = "Open File No 1" })
 vim.keymap.set("n", "<Leader>2", function() harpoon:list():select(2) end,
-    { desc = "Open File No 2" })
+  { desc = "Open File No 2" })
 vim.keymap.set("n", "<Leader>3", function() harpoon:list():select(3) end,
-    { desc = "Open file No 3" })
+  { desc = "Open file No 3" })
 vim.keymap.set("n", "<Leader>4", function() harpoon:list():select(4) end,
-    { desc = "Open File No 4" })
+  { desc = "Open File No 4" })
 
 vim.opt.tabstop = 4 -- The width of a TAB is set to 4.
 -- Still it is a \t. It is just that
@@ -645,10 +645,10 @@ require('lspconfig').rust_analyzer.setup {
       -- Other Settings ...
       procMacro = {
         ignored = {
-            leptos_macro = {
-                "component",
-                "server",
-            },
+          leptos_macro = {
+            "component",
+            "server",
+          },
         },
       },
     },
@@ -659,3 +659,19 @@ require('lspconfig').rust_analyzer.setup {
 require("cmp").config.formatting = {
   format = require("tailwindcss-colorizer-cmp").formatter
 }
+
+-- 1
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("lsp", { clear = true }),
+  callback = function(args)
+    -- 2
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      -- 3
+      buffer = args.buf,
+      callback = function()
+        -- 4 + 5
+        vim.lsp.buf.format { async = false, id = args.data.client_id }
+      end,
+    })
+  end
+})
