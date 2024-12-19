@@ -677,3 +677,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 require 'lspconfig'.gleam.setup({})
+
+vim.keymap.set("n", "-", "<CMD>Oil<CR>")
