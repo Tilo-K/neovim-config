@@ -1015,6 +1015,15 @@ require('lazy').setup({
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
+vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
+vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
+vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
+vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
+
+vim.keymap.set('n', '<Leader>ca', function()
+  vim.lsp.buf.code_action()
+end, { desc = 'Code Action' })
+
 local harpoon = require 'harpoon'
 harpoon:setup {
   settings = {
