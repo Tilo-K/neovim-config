@@ -894,7 +894,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'catppuccin-mocha'
     end,
   },
 
@@ -984,7 +984,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
@@ -1014,3 +1014,35 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+local harpoon = require 'harpoon'
+harpoon:setup {
+  settings = {
+    save_on_toggle = true,
+    sync_on_ui_close = true,
+  },
+}
+
+vim.keymap.set('n', '<Leader><Tab>', function()
+  harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = 'Open harpoon window' })
+vim.keymap.set('n', '<Leader>m', function()
+  harpoon:list():add()
+end, { desc = 'Append file to harpoon list' })
+
+vim.keymap.set('n', '<Leader>1', function()
+  harpoon:list():select(1)
+end, { desc = 'Open File No 1' })
+vim.keymap.set('n', '<Leader>2', function()
+  harpoon:list():select(2)
+end, { desc = 'Open File No 2' })
+vim.keymap.set('n', '<Leader>3', function()
+  harpoon:list():select(3)
+end, { desc = 'Open file No 3' })
+vim.keymap.set('n', '<Leader>4', function()
+  harpoon:list():select(4)
+end, { desc = 'Open File No 4' })
+
+require('oil').setup()
+
+vim.keymap.set('n', '-', '<CMD>Oil<CR>')
